@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4da7d748-7f64-434e-836a-ce1d504365d1" name="Default Changelist" comment="" />
+    <list default="true" id="4da7d748-7f64-434e-836a-ce1d504365d1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test/factory/main/factory.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/factory/model/student.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +19,9 @@
     </option>
   </component>
   <component name="GOROOT" path="D:\Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
   </component>
@@ -39,30 +46,21 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Fundament" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.other" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\github\Goland\test\factory\main" />
       <recent name="E:\github\LearnGo\test" />
       <recent name="E:\github\LearnGo\test\example\example01" />
       <recent name="E:\github\LearnGo\test\example\example02" />
       <recent name="E:\github\LearnGo\test\example" />
-      <recent name="E:\github\LearnGo\test\ifDeam" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build LearnGo/test/func">
-    <configuration name="go build LearnGo/test/example/example04" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="LearnGo" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/test/example/example04/arrayExercise.go" />
-      <package value="LearnGo/test/example/example04" />
-      <directory value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Go Build.go build LearnGo/test/factory/main">
     <configuration name="go build LearnGo/test/example/example05" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="LearnGo" />
       <working_directory value="$PROJECT_DIR$" />
@@ -78,6 +76,15 @@
       <kind value="PACKAGE" />
       <filePath value="$PROJECT_DIR$/test/example/map/map.go" />
       <package value="LearnGo/test/example/map" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build LearnGo/test/factory/main" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="LearnGo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/test/factory/main/factory.go" />
+      <package value="LearnGo/test/factory/main" />
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
@@ -101,11 +108,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build LearnGo/test/factory/main" />
         <item itemvalue="Go Build.go build LearnGo/test/func" />
         <item itemvalue="Go Build.go build LearnGo/test/struct" />
         <item itemvalue="Go Build.go build LearnGo/test/example/map" />
         <item itemvalue="Go Build.go build LearnGo/test/example/example05" />
-        <item itemvalue="Go Build.go build LearnGo/test/example/example04" />
       </list>
     </recent_temporary>
   </component>
@@ -140,6 +147,8 @@
       <workItem from="1584365700051" duration="1268000" />
       <workItem from="1584411023808" duration="2103000" />
       <workItem from="1584414451491" duration="6672000" />
+      <workItem from="1584531416583" duration="26000" />
+      <workItem from="1585054946797" duration="1498000" />
     </task>
     <servers />
   </component>
@@ -159,26 +168,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="668" y="214" key="#go_build_LearnGo/test/example/0.0.1920.1040@0.0.1920.1040" timestamp="1582117628093" />
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1584444109624">
+    <state width="1160" height="214" key="GridCell.Tab.0.bottom" timestamp="1585056534887">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1584444109624" />
-    <state width="1160" height="215" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1583419689586" />
-    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1584444109623">
+    <state width="1160" height="214" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585056534887" />
+    <state width="1160" height="214" key="GridCell.Tab.0.center" timestamp="1585056534887">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1584444109623" />
-    <state width="1160" height="215" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1583419689586" />
-    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1584444109623">
+    <state width="1160" height="214" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585056534887" />
+    <state width="1160" height="214" key="GridCell.Tab.0.left" timestamp="1585056534887">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1584444109623" />
-    <state width="1160" height="215" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1583419689586" />
-    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1584444109624">
+    <state width="1160" height="214" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585056534887" />
+    <state width="1160" height="214" key="GridCell.Tab.0.right" timestamp="1585056534887">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1584444109624" />
-    <state width="1160" height="215" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1583419689586" />
+    <state width="1160" height="214" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585056534887" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1582090062527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
