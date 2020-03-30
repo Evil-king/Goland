@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4da7d748-7f64-434e-836a-ce1d504365d1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/example/example07/main/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/example/example07/test/student.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/example/example08/testMyAccount.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/familyAccount/main/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/familyAccount/utils/familyAccount.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/interfacevsextends/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,32 +56,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/example" />
       <recent name="$PROJECT_DIR$/test/example/example07/main" />
       <recent name="E:\github\Goland\test\factory\main" />
       <recent name="E:\github\LearnGo\test" />
       <recent name="E:\github\LearnGo\test\example\example01" />
-      <recent name="E:\github\LearnGo\test\example\example02" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build LearnGo/test/example/example07/test">
-    <configuration name="go build LearnGo/test/example/example006/main" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="LearnGo" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/test/example/example006/main/main.go" />
-      <package value="LearnGo/test/example/example006/main" />
-      <directory value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build LearnGo/test/example/example06/main" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="LearnGo" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/test/example/example06/main/main.go" />
-      <package value="LearnGo/test/example/example06/main" />
-      <directory value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Go Build.go build LearnGo/test/familyAccount/main">
     <configuration name="go build LearnGo/test/example/example07" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="LearnGo" />
       <working_directory value="$PROJECT_DIR$" />
@@ -98,22 +82,40 @@
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="go build LearnGo/test/extends" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build LearnGo/test/example/example08" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="LearnGo" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/test/extends/main.go" />
-      <package value="LearnGo/test/extends" />
+      <filePath value="$PROJECT_DIR$/test/example/example08/testMyAccount.go" />
+      <package value="LearnGo/test/example/example08" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build LearnGo/test/familyAccount/main" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="LearnGo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/test/familyAccount/main/main.go" />
+      <package value="LearnGo/test/familyAccount/main" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build LearnGo/test/interfacevsextends" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="LearnGo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/test/interfacevsextends/main.go" />
+      <package value="LearnGo/test/interfacevsextends" />
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build LearnGo/test/familyAccount/main" />
+        <item itemvalue="Go Build.go build LearnGo/test/example/example08" />
+        <item itemvalue="Go Build.go build LearnGo/test/interfacevsextends" />
         <item itemvalue="Go Build.go build LearnGo/test/example/example07/test" />
         <item itemvalue="Go Build.go build LearnGo/test/example/example07" />
-        <item itemvalue="Go Build.go build LearnGo/test/extends" />
-        <item itemvalue="Go Build.go build LearnGo/test/example/example006/main" />
-        <item itemvalue="Go Build.go build LearnGo/test/example/example06/main" />
       </list>
     </recent_temporary>
   </component>
@@ -151,7 +153,7 @@
       <workItem from="1584531416583" duration="26000" />
       <workItem from="1585054946797" duration="1498000" />
       <workItem from="1585211741712" duration="8481000" />
-      <workItem from="1585531449043" duration="5101000" />
+      <workItem from="1585531449043" duration="12314000" />
     </task>
     <servers />
   </component>
@@ -175,30 +177,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="668" y="214" key="#go_build_LearnGo/test/example/0.0.1920.1040@0.0.1920.1040" timestamp="1582117628093" />
-    <state width="2518" height="385" key="GridCell.Tab.0.bottom" timestamp="1585536803626">
+    <state width="2518" height="627" key="GridCell.Tab.0.bottom" timestamp="1585558654318">
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1584444109624" />
     <state width="1160" height="214" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585056534887" />
-    <state width="2518" height="385" key="GridCell.Tab.0.bottom/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585536803626" />
-    <state width="2518" height="385" key="GridCell.Tab.0.center" timestamp="1585536803625">
+    <state width="2518" height="627" key="GridCell.Tab.0.bottom/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585558654318" />
+    <state width="2518" height="627" key="GridCell.Tab.0.center" timestamp="1585558654317">
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1584444109623" />
     <state width="1160" height="214" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585056534887" />
-    <state width="2518" height="385" key="GridCell.Tab.0.center/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585536803625" />
-    <state width="2518" height="385" key="GridCell.Tab.0.left" timestamp="1585536803624">
+    <state width="2518" height="627" key="GridCell.Tab.0.center/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585558654317" />
+    <state width="2518" height="627" key="GridCell.Tab.0.left" timestamp="1585558654317">
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1584444109623" />
     <state width="1160" height="214" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585056534887" />
-    <state width="2518" height="385" key="GridCell.Tab.0.left/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585536803624" />
-    <state width="2518" height="385" key="GridCell.Tab.0.right" timestamp="1585536803626">
+    <state width="2518" height="627" key="GridCell.Tab.0.left/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585558654317" />
+    <state width="2518" height="627" key="GridCell.Tab.0.right" timestamp="1585558654318">
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
     <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1584444109624" />
     <state width="1160" height="214" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585056534887" />
-    <state width="2518" height="385" key="GridCell.Tab.0.right/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585536803626" />
+    <state width="2518" height="627" key="GridCell.Tab.0.right/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585558654318" />
     <state width="2518" height="474" key="GridCell.Tab.1.bottom" timestamp="1585304830622">
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
