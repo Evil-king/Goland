@@ -12,3 +12,16 @@ type CustomerService struct {
 }
 
 
+//编写一个方法，可以返回 *CustomerService
+func NewService() *CustomerService  {
+	customerService := &CustomerService{}
+	customerService.customerNum = 1
+	 customer := model.NewCustomerFactory(1,"张三","男",20,"112","zhangsan@163,com")
+	customerService.customers = append(customerService.customers,customer)
+	return customerService
+}
+
+//返回客户切片
+func (this *CustomerService) List() []model.Customer {
+	return this.customers
+}
