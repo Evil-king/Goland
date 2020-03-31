@@ -34,6 +34,16 @@ func NewCustomerFactory2(name string, gender string, age int, phone string, emai
 	}
 }
 
+//利用工厂模式返回一个Customer对象实利 不带ID的
+func NewCustomerFactoryAndNil() Customer {
+	return Customer{
+		Name:   "",
+		Gender: "",
+		Age:    0,
+		Phone:  "",
+		Email:  "",
+	}
+}
 
 //返回对象信息
 func (this Customer) GetInfo() string {

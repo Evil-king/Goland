@@ -13,7 +13,7 @@ type customerView struct {
 }
 
 //显示所有的客户信息
-func (this *customerView) List() {
+func (this *customerView) list() {
 	//获取当前所有客户信息 客户信息都在切片中
 	customers := this.customerService.List()
 	//显示
@@ -23,6 +23,26 @@ func (this *customerView) List() {
 		fmt.Println(customers[i].GetInfo())
 	}
 	fmt.Printf("\n\n-------------------------客户列表完成-------------------------\n\n")
+}
+
+func (this *customerView) delete() {
+	fmt.Println("---------------------------删除客户---------------------------")
+	fmt.Println("请选择待删除客户编号(-1退出):")
+	id := -1
+	fmt.Scanln(&id)
+	if id == -1 {
+		return
+	}
+	fmt.Println("确认是否删除(Y/N):")
+	choice := ""
+	fmt.Scanln(&choice)
+	if choice == "Y" || choice == "y" {
+		if this.customerService.Delete(id) {
+			fmt.Println("删除完成")
+		} else {
+			fmt.Println("删除失败")
+		}
+	}
 }
 
 //添加客户的方法
@@ -54,6 +74,38 @@ func (this *customerView) add() {
 
 }
 
+//添加客户的方法
+func (this *customerView) update() {
+	fmt.Println("---------------------修改客户---------------------")
+	fmt.Println("id:")
+	id := 0
+	fmt.Scanln(&id)
+	fmt.Println("姓名:")
+	name := ""
+	fmt.Scanln(&name)
+	fmt.Println("性别:")
+	gender := ""
+	fmt.Scanln(&gender)
+	fmt.Println("年龄:")
+	age := 0
+	fmt.Scanln(&age)
+	fmt.Println("电话:")
+	phone := ""
+	fmt.Scanln(&phone)
+	fmt.Println("电邮:")
+	email := ""
+	fmt.Scanln(&email)
+	//组装切片 枸酱一个新的customer实体
+	customers := model.NewCustomerFactory(id, name, gender, age, phone, email)
+	//调用customerService的方法
+	if this.customerService.Update(customers) {
+		fmt.Println("修改完成")
+	} else {
+		fmt.Println("修改失败")
+	}
+
+}
+
 //显示主菜单
 func (this *customerView) MainMenu() {
 	for {
@@ -69,11 +121,11 @@ func (this *customerView) MainMenu() {
 		case "1":
 			this.add()
 		case "2":
-			fmt.Println("修 改 客 户")
+			this.update()
 		case "3":
-			fmt.Println("删 除 客 户")
+			this.delete()
 		case "4":
-			this.List()
+			this.list()
 		case "5":
 			this.loop = false
 		default:
