@@ -25,3 +25,13 @@ func NewService() *CustomerService  {
 func (this *CustomerService) List() []model.Customer {
 	return this.customers
 }
+
+//添加客户
+func (this *CustomerService) Add(customer model.Customer) bool {
+	//自动分配id的规则，就是添加的顺序
+	this.customerNum++
+	customer.Id = this.customerNum
+	//将创建好的customer加入到切片中
+	this.customers = append(this.customers,customer)
+	return true
+}
