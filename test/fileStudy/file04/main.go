@@ -6,6 +6,9 @@ import (
 	"os"
 )
 
+/**
+写入数据到文件
+ */
 func main() {
 	filePath := "/Users/fox/Desktop/writer.txt"
 	file, err := os.OpenFile(filePath, os.O_WRONLY|os.O_CREATE, 0666)
