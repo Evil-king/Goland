@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="4da7d748-7f64-434e-836a-ce1d504365d1" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/test/example/argsdemo/main.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/test/json/serial/main.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/test/testing/monster.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/test/testing/monster_test.go" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/test/channel/channelDemo3/main.go" afterDir="false" />
+>>>>>>> 5ca5ee9d08d27d1e298740dad2ff9f294f7a2055
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,21 +69,29 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="go.import.settings.migrated" value="true" />
+<<<<<<< HEAD
     <property name="go.sdk.automatically.set" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/fileStudy/exercise" />
+>>>>>>> 5ca5ee9d08d27d1e298740dad2ff9f294f7a2055
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/fileStudy/exercise" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/example" />
+      <recent name="$PROJECT_DIR$/test/example/example07/main" />
       <recent name="E:\github\Goland\test\factory\main" />
       <recent name="E:\github\LearnGo\test" />
       <recent name="E:\github\LearnGo\test\example\example01" />
-      <recent name="E:\github\LearnGo\test\example\example02" />
-      <recent name="E:\github\LearnGo\test\example" />
     </key>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Go Test.TestMonster_ReStore in LearnGo/test/testing">
     <configuration name="go build LearnGo/test/example/example006/main" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="LearnGo" />
@@ -91,22 +121,67 @@
       <method v="2" />
     </configuration>
     <configuration name="TestMonster_ReStore in LearnGo/test/testing" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+=======
+  <component name="RunManager" selected="Go Build.go build LearnGo/test/channel/channelDemo3">
+    <configuration name="go build LearnGo/test/channel/channelDemo" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="LearnGo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/test/channel/channelDemo/main.go" />
+      <package value="LearnGo/test/channel/channelDemo" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build LearnGo/test/channel/channelDemo2" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="LearnGo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/test/channel/channelDemo2/main.go" />
+      <package value="LearnGo/test/channel/channelDemo2" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build LearnGo/test/channel/channelDemo3" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="LearnGo" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/test/channel/channelDemo3/main.go" />
+      <package value="LearnGo/test/channel/channelDemo3" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build LearnGo/test/fileStudy/exercise/exercise04" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+>>>>>>> 5ca5ee9d08d27d1e298740dad2ff9f294f7a2055
       <module name="LearnGo" />
       <working_directory value="$PROJECT_DIR$/test/testing" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
+<<<<<<< HEAD
       <package value="LearnGo/test/testing" />
+=======
+      <filePath value="$PROJECT_DIR$/test/fileStudy/exercise/exercise04/main.go" />
+      <package value="LearnGo/test/fileStudy/exercise/exercise04" />
+>>>>>>> 5ca5ee9d08d27d1e298740dad2ff9f294f7a2055
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <pattern value="^TestMonster_ReStore$" />
       <method v="2" />
     </configuration>
+<<<<<<< HEAD
     <configuration name="TestMonster_Store in LearnGo/test/testing" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+=======
+    <configuration name="go build LearnGo/test/fileStudy/exercise/exercise05" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+>>>>>>> 5ca5ee9d08d27d1e298740dad2ff9f294f7a2055
       <module name="LearnGo" />
       <working_directory value="$PROJECT_DIR$/test/testing" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
+<<<<<<< HEAD
       <package value="LearnGo/test/testing" />
+=======
+      <filePath value="$PROJECT_DIR$/test/fileStudy/exercise/exercise05/main.go" />
+      <package value="LearnGo/test/fileStudy/exercise/exercise05" />
+>>>>>>> 5ca5ee9d08d27d1e298740dad2ff9f294f7a2055
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
       <pattern value="^TestMonster_Store$" />
@@ -114,11 +189,19 @@
     </configuration>
     <recent_temporary>
       <list>
+<<<<<<< HEAD
         <item itemvalue="Go Test.TestMonster_ReStore in LearnGo/test/testing" />
         <item itemvalue="Go Test.TestMonster_Store in LearnGo/test/testing" />
         <item itemvalue="Go Build.go build LearnGo/test/json/serial" />
         <item itemvalue="Go Build.go build LearnGo/test/extends" />
         <item itemvalue="Go Build.go build LearnGo/test/example/example006/main" />
+=======
+        <item itemvalue="Go Build.go build LearnGo/test/channel/channelDemo3" />
+        <item itemvalue="Go Build.go build LearnGo/test/channel/channelDemo2" />
+        <item itemvalue="Go Build.go build LearnGo/test/channel/channelDemo" />
+        <item itemvalue="Go Build.go build LearnGo/test/fileStudy/exercise/exercise05" />
+        <item itemvalue="Go Build.go build LearnGo/test/fileStudy/exercise/exercise04" />
+>>>>>>> 5ca5ee9d08d27d1e298740dad2ff9f294f7a2055
       </list>
     </recent_temporary>
   </component>
@@ -143,18 +226,41 @@
       <workItem from="1584414451491" duration="6672000" />
       <workItem from="1584531416583" duration="26000" />
       <workItem from="1585054946797" duration="1498000" />
+<<<<<<< HEAD
       <workItem from="1585211741712" duration="8024000" />
       <workItem from="1586159094606" duration="2475000" />
       <workItem from="1586654312138" duration="3976000" />
       <workItem from="1587261722545" duration="3674000" />
+=======
+      <workItem from="1585211741712" duration="8481000" />
+      <workItem from="1585531449043" duration="14294000" />
+      <workItem from="1585620496252" duration="11877000" />
+      <workItem from="1585706662381" duration="6942000" />
+      <workItem from="1585727604911" duration="475000" />
+      <workItem from="1585982712720" duration="3834000" />
+      <workItem from="1587306114542" duration="2648000" />
+>>>>>>> 5ca5ee9d08d27d1e298740dad2ff9f294f7a2055
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+<<<<<<< HEAD
   <component name="VcsManagerConfiguration">
     <option name="LAST_COMMIT_MESSAGE" value="" />
+=======
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+>>>>>>> 5ca5ee9d08d27d1e298740dad2ff9f294f7a2055
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -170,6 +276,10 @@
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
     <state x="880" y="374" key="#GOROOT/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585212028479" />
+    <state x="880" y="363" key="#Inspections" timestamp="1585638068509">
+      <screen x="0" y="23" width="2560" height="1349" />
+    </state>
+    <state x="880" y="363" key="#Inspections/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585638068509" />
     <state x="668" y="214" key="#go_build_LearnGo/test" timestamp="1582089818090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -178,55 +288,113 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="668" y="214" key="#go_build_LearnGo/test/example/0.0.1920.1040@0.0.1920.1040" timestamp="1582117628093" />
+<<<<<<< HEAD
     <state width="2517" height="398" key="GridCell.Tab.0.bottom" timestamp="1587273406934">
       <screen x="0" y="0" width="2560" height="1400" />
+=======
+    <state width="2518" height="627" key="GridCell.Tab.0.bottom" timestamp="1587347399467">
+      <screen x="0" y="23" width="2560" height="1349" />
+>>>>>>> 5ca5ee9d08d27d1e298740dad2ff9f294f7a2055
     </state>
     <state width="2517" height="398" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587273406934" />
     <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1584444109624" />
+<<<<<<< HEAD
     <state width="1160" height="214" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586668745795" />
     <state width="2518" height="385" key="GridCell.Tab.0.bottom/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585291359879" />
     <state width="2517" height="398" key="GridCell.Tab.0.center" timestamp="1587273406934">
       <screen x="0" y="0" width="2560" height="1400" />
+=======
+    <state width="1160" height="214" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585056534887" />
+    <state width="1750" height="460" key="GridCell.Tab.0.bottom/0.23.1792.1029@0.23.1792.1029" timestamp="1585986588788" />
+    <state width="2518" height="627" key="GridCell.Tab.0.bottom/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1587347399467" />
+    <state width="2518" height="474" key="GridCell.Tab.0.bottom/0.23.2560.1349@0.23.2560.1349" timestamp="1585727592024" />
+    <state width="2518" height="627" key="GridCell.Tab.0.center" timestamp="1587347399466">
+      <screen x="0" y="23" width="2560" height="1349" />
+>>>>>>> 5ca5ee9d08d27d1e298740dad2ff9f294f7a2055
     </state>
     <state width="2517" height="398" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587273406934" />
     <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1584444109623" />
+<<<<<<< HEAD
     <state width="1160" height="214" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586668745793" />
     <state width="2518" height="385" key="GridCell.Tab.0.center/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585291359878" />
     <state width="2517" height="398" key="GridCell.Tab.0.left" timestamp="1587273406934">
       <screen x="0" y="0" width="2560" height="1400" />
+=======
+    <state width="1160" height="214" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585056534887" />
+    <state width="1750" height="460" key="GridCell.Tab.0.center/0.23.1792.1029@0.23.1792.1029" timestamp="1585986588788" />
+    <state width="2518" height="627" key="GridCell.Tab.0.center/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1587347399466" />
+    <state width="2518" height="474" key="GridCell.Tab.0.center/0.23.2560.1349@0.23.2560.1349" timestamp="1585727592023" />
+    <state width="2518" height="627" key="GridCell.Tab.0.left" timestamp="1587347399466">
+      <screen x="0" y="23" width="2560" height="1349" />
+>>>>>>> 5ca5ee9d08d27d1e298740dad2ff9f294f7a2055
     </state>
     <state width="2517" height="398" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587273406934" />
     <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1584444109623" />
+<<<<<<< HEAD
     <state width="1160" height="214" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586668745792" />
     <state width="2518" height="385" key="GridCell.Tab.0.left/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585291359877" />
     <state width="2517" height="398" key="GridCell.Tab.0.right" timestamp="1587273406934">
       <screen x="0" y="0" width="2560" height="1400" />
+=======
+    <state width="1160" height="214" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585056534887" />
+    <state width="1750" height="460" key="GridCell.Tab.0.left/0.23.1792.1029@0.23.1792.1029" timestamp="1585986588787" />
+    <state width="2518" height="627" key="GridCell.Tab.0.left/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1587347399466" />
+    <state width="2518" height="474" key="GridCell.Tab.0.left/0.23.2560.1349@0.23.2560.1349" timestamp="1585727592023" />
+    <state width="2518" height="627" key="GridCell.Tab.0.right" timestamp="1587347399466">
+      <screen x="0" y="23" width="2560" height="1349" />
+>>>>>>> 5ca5ee9d08d27d1e298740dad2ff9f294f7a2055
     </state>
     <state width="2517" height="398" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587273406934" />
     <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.2560.1400@0.0.1920.1040" timestamp="1584444109624" />
+<<<<<<< HEAD
     <state width="1160" height="214" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586668745794" />
     <state width="2518" height="385" key="GridCell.Tab.0.right/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585291359879" />
     <state width="2518" height="474" key="GridCell.Tab.1.bottom" timestamp="1585290950271">
+=======
+    <state width="1160" height="214" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585056534887" />
+    <state width="1750" height="460" key="GridCell.Tab.0.right/0.23.1792.1029@0.23.1792.1029" timestamp="1585986588788" />
+    <state width="2518" height="627" key="GridCell.Tab.0.right/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1587347399466" />
+    <state width="2518" height="474" key="GridCell.Tab.0.right/0.23.2560.1349@0.23.2560.1349" timestamp="1585727592024" />
+    <state width="1750" height="346" key="GridCell.Tab.1.bottom" timestamp="1586223795544">
+>>>>>>> 5ca5ee9d08d27d1e298740dad2ff9f294f7a2055
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
-    <state width="2518" height="474" key="GridCell.Tab.1.bottom/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585290950271" />
-    <state width="2518" height="474" key="GridCell.Tab.1.center" timestamp="1585290950270">
+    <state width="1750" height="346" key="GridCell.Tab.1.bottom/0.23.1792.1029@0.23.1792.1029" timestamp="1585986147755" />
+    <state width="1750" height="346" key="GridCell.Tab.1.bottom/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1586223795544" />
+    <state width="2518" height="474" key="GridCell.Tab.1.bottom/0.23.2560.1349@0.23.2560.1349" timestamp="1585727592025" />
+    <state width="1750" height="346" key="GridCell.Tab.1.center" timestamp="1586223795544">
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
-    <state width="2518" height="474" key="GridCell.Tab.1.center/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585290950270" />
-    <state width="2518" height="474" key="GridCell.Tab.1.left" timestamp="1585290950270">
+    <state width="1750" height="346" key="GridCell.Tab.1.center/0.23.1792.1029@0.23.1792.1029" timestamp="1585986147754" />
+    <state width="1750" height="346" key="GridCell.Tab.1.center/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1586223795544" />
+    <state width="2518" height="474" key="GridCell.Tab.1.center/0.23.2560.1349@0.23.2560.1349" timestamp="1585727592024" />
+    <state width="1750" height="346" key="GridCell.Tab.1.left" timestamp="1586223795544">
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
-    <state width="2518" height="474" key="GridCell.Tab.1.left/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585290950270" />
-    <state width="2518" height="474" key="GridCell.Tab.1.right" timestamp="1585290950271">
+    <state width="1750" height="346" key="GridCell.Tab.1.left/0.23.1792.1029@0.23.1792.1029" timestamp="1585986147754" />
+    <state width="1750" height="346" key="GridCell.Tab.1.left/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1586223795544" />
+    <state width="2518" height="474" key="GridCell.Tab.1.left/0.23.2560.1349@0.23.2560.1349" timestamp="1585727592024" />
+    <state width="1750" height="346" key="GridCell.Tab.1.right" timestamp="1586223795544">
       <screen x="0" y="23" width="2560" height="1349" />
     </state>
+<<<<<<< HEAD
     <state width="2518" height="474" key="GridCell.Tab.1.right/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585290950271" />
     <state x="789" y="325" key="SettingsEditor" timestamp="1587262854018">
       <screen x="0" y="0" width="2560" height="1400" />
+=======
+    <state width="1750" height="346" key="GridCell.Tab.1.right/0.23.1792.1029@0.23.1792.1029" timestamp="1585986147754" />
+    <state width="1750" height="346" key="GridCell.Tab.1.right/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1586223795544" />
+    <state width="2518" height="474" key="GridCell.Tab.1.right/0.23.2560.1349@0.23.2560.1349" timestamp="1585727592025" />
+    <state x="789" y="336" key="SettingsEditor" timestamp="1585214677945">
+      <screen x="0" y="23" width="2560" height="1349" />
+>>>>>>> 5ca5ee9d08d27d1e298740dad2ff9f294f7a2055
     </state>
     <state x="789" y="325" key="SettingsEditor/-1920.0.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1587262854018" />
     <state x="789" y="336" key="SettingsEditor/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585214677945" />
+    <state x="1085" y="621" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585638680571">
+      <screen x="0" y="23" width="2560" height="1349" />
+    </state>
+    <state x="1085" y="621" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.2560.1349/-1792.272.1792.1097@0.23.2560.1349" timestamp="1585638680571" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1582090062527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
