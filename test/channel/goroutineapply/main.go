@@ -7,7 +7,7 @@ import (
 
 //向 intChan放入1-8000个数
 func punNum(intChan chan int) {
-	for i := 1; i <= 80; i++ {
+	for i := 1; i <= 8000; i++ {
 		intChan<- i
 	}
 	//关闭intChan
@@ -40,13 +40,14 @@ func putPrimNum(intChan chan int, primeChan chan int, exitChan chan bool) {
 	}
 	//这里我们还不能关闭 primeChan 向退出的管道exitChan 写入true
 	fmt.Println("有一个primeNum 协程因为取不到数据，退出")
+	//向退出的管道exitChan 写入true
 	exitChan<- true
 }
 
 func main() {
 
 	intChan := make(chan int, 1000)
-	primeChan := make(chan int, 2000) //放入结果
+	primeChan := make(chan int, 8000) //放入结果
 	//标识退出的管道
 	exitChan := make(chan bool, 4) //4个
 
