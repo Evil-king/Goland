@@ -1,7 +1,6 @@
 package model
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -16,5 +15,4 @@ func TestUser_GetUserById(t *testing.T) {
 		ID: 1,
 	}
 	u,_ :=user.GetUserById()
-	fmt.Println("对象为:",u)
 }
