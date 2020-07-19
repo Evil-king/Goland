@@ -2,6 +2,10 @@ package SimpleFactory
 
 import "errors"
 
+/**
+简单工厂模式
+*/
+
 //定义一个Cache接口，作为父类
 type Cache interface {
 	Get(k string) string
