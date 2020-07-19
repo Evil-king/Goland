@@ -53,6 +53,15 @@ func proc(input string, processor func(str string)) {
 	processor(input)
 }
 
+//闭包作为函数返回值
+func Increase() func() int {
+	n := 0
+	return func() int {
+		n++
+		return n
+	}
+}
+
 func main() {
 	//p := Person{"Tom"}
 	//p.test()
@@ -69,16 +78,30 @@ func main() {
 	//result3 := p.getSum(50,80)
 	//fmt.Println("result3 = ", result3)
 
-	proc("王小明", func(str string) {
-		for _, v := range str {
-			fmt.Printf("%c\n", v)
-		}
-	})
+	//---------------------------------------
 
-	//匿名函数
-	func(name string) {
-		fmt.Println("My Name", name)
-	}("王小二")
+	//proc("王小明", func(str string) {
+	//	for _, v := range str {
+	//		fmt.Printf("%c\n", v)
+	//	}
+	//})
+	//
+	////匿名函数
+	//func(name string) {
+	//	fmt.Println("My Name", name)
+	//}("王小二")
+	//
+	//currentTime()
 
-	currentTime()
+	//---------------------------------------
+
+	//in := Increase()
+	//fmt.Println(in())
+
+	n := 0
+	f := func() int {
+		n += 1
+		return n
+	}
+	fmt.Println(f())
 }
