@@ -9,5 +9,4 @@ func main() {
 	ptr = &num
 	*ptr = 10
 	fmt.Printf("num=%v", num)
-
 }
