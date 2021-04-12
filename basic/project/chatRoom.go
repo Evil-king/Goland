@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"net"
+	"strings"
+	"time"
 )
 
 //创建用户结构体类型
@@ -32,7 +34,8 @@ func MakeMsg(clnt Client, msg string) (buf string) {
 
 func HandlerConnect(conn net.Conn) {
 	defer conn.Close()
-
+	//创建channel判断 用户是否活跃
+	hasData := make(chan bool)
 	//获取用户 网络地址 ID+pory
 	netAddr := conn.RemoteAddr().String()
 	//创建新连接用户的 结构体 默认用户是 IP+port
@@ -48,12 +51,16 @@ func HandlerConnect(conn net.Conn) {
 	//message <- "[" + netAddr + "]" + clnt.Name + "login"
 	message <- MakeMsg(clnt, "login")
 
+	//创建一个channel 用来判断用户退出状态
+	isQuit := make(chan bool)
+
 	//创建一个匿名 go 程，专门处理用户发送的消息
 	go func() {
 		for {
 			buf := make([]byte, 4096)
 			n, err := conn.Read(buf)
 			if n == 0 {
+				isQuit <- true
 				fmt.Printf("检测到客户端:%s退出\n", clnt.Name)
 				return
 			}
@@ -62,14 +69,42 @@ func HandlerConnect(conn net.Conn) {
 				return
 			}
 			//将读到的用户消息 保存到msg中 string类型
-			msg := string(buf[:n])
-			//将读到的用户消息，写入到message中
-			message <- MakeMsg(clnt, msg)
+			msg := string(buf[:n-1])
+			//提取在线用户列表
+			if msg == "who" && len(msg) == 3 {
+				conn.Write([]byte("online user lsit:\n"))
+				//遍历当前map 获取在线用户
+				for _, user := range onlineMap {
+					userInfo := user.Addr + ":" + user.Name + "\n"
+					conn.Write([]byte(userInfo))
+				}
+			} else if len(msg) >= 8 && msg[:6] == "rename" { //rename|
+				newName := strings.Split(msg, "|")[1] //msg[8:]
+				clnt.Name = newName                   //修改结构体成员name
+				onlineMap[netAddr] = clnt             //更新onlineMap
+				conn.Write([]byte("rename success\n"))
+			} else {
+				//将读到的用户消息，写入到message中
+				message <- MakeMsg(clnt, msg)
+			}
 		}
+		hasData <- true
 	}()
 
 	for {
-
+		//监听channel上的数据流动
+		select {
+		case <-isQuit:
+			delete(onlineMap, clnt.Addr)       //将用户从onlineMap移除
+			message <- MakeMsg(clnt, "logout") //写入用户退出消息到全局channel
+			return
+		case <-hasData:
+			//什么都不做，目的是重复下面case的计时器
+		case <-time.After(time.Second * 10):
+			delete(onlineMap, clnt.Addr)       //将用户从onlineMap移除
+			message <- MakeMsg(clnt, "logout") //写入用户退出消息到全局channel
+			return
+		}
 	}
 }
 
