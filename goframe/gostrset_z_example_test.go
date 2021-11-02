@@ -1,6 +1,7 @@
 package gostrset
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/gogf/gf/container/gset"
 	"testing"
@@ -14,6 +15,14 @@ func TestNewStrSet(t *testing.T) {
 		fmt.Println("Iterator ", v)
 		return true
 	})
+}
+
+func TestNewStrSetFrom(t *testing.T) {
+	strSet := gset.NewStrSetFrom([]string{"str1", "str2", "str3"}, true)
+	fmt.Println(strSet.Slice())
+
+	// Mya Output:
+
 }
 
 func TestAddIfNotExist(t *testing.T) {
@@ -118,9 +127,106 @@ func TestJoin(t *testing.T) {
 }
 
 func TestLockFunc(t *testing.T) {
-	//s1 := gset.NewStrSet(true)
-	//s1.Add([]string{"a", "b", "c", "d"}...)
-	//s1.LockFunc(func(m map[string]struct{}) {
-	//	fmt.Println(m["a"])
-	//})
+	s1 := gset.NewStrSet(true)
+	s1.Add([]string{"a", "b", "c", "d"}...)
+	s1.LockFunc(func(m map[string]struct{}) {
+		m["a"] = struct{}{}
+	})
+}
+
+func TestRLockFunc(t *testing.T) {
+	s1 := gset.NewStrSet(true)
+	s1.Add([]string{"a", "b", "c", "d"}...)
+	s1.RLockFunc(func(m map[string]struct{}) {
+		fmt.Println(m)
+	})
+}
+
+func TestMarshalJSON(t *testing.T) {
+	type Student struct {
+		Id     int
+		Name   string
+		Scores *gset.IntSet
+	}
+	s := Student{
+		Id:     1,
+		Name:   "john",
+		Scores: gset.NewIntSetFrom([]int{100, 99, 98}),
+	}
+	b, _ := json.Marshal(s)
+	fmt.Println(string(b))
+}
+
+func TestMerge(t *testing.T) {
+	s1 := gset.NewStrSet(true)
+	s1.Add([]string{"a", "b", "c", "d"}...)
+
+	s2 := gset.NewStrSet(true)
+	fmt.Println(s1.Merge(s2).Slice())
+}
+
+func TestPop(t *testing.T) {
+	s1 := gset.NewStrSet(true)
+	s1.Add([]string{"a", "b", "c", "d"}...)
+
+	fmt.Println(s1.Pop())
+}
+
+func TestPops(t *testing.T) {
+	s1 := gset.NewStrSet(true)
+	s1.Add([]string{"a", "b", "c", "d"}...)
+	for _, v := range s1.Pops(2) {
+		fmt.Println(v)
+	}
+}
+
+func TestRemove(t *testing.T) {
+	s1 := gset.NewStrSet(true)
+	s1.Add([]string{"a", "b", "c", "d"}...)
+	s1.Remove("a")
+	fmt.Println(s1.Slice())
+}
+
+func TestSlice(t *testing.T) {
+	s1 := gset.NewStrSet(true)
+	s1.Add([]string{"a", "b", "c", "d"}...)
+	fmt.Println(s1.Slice())
+}
+
+func TestString(t *testing.T) {
+	s1 := gset.NewStrSet(true)
+	s1.Add([]string{"a", "b", "c", "d"}...)
+	fmt.Println(s1.String())
+}
+
+func TestSum(t *testing.T) {
+	s1 := gset.NewStrSet(true)
+	s1.Add([]string{"a", "b", "c", "d"}...)
+	fmt.Println(s1.Sum())
+}
+
+func TestUnion(t *testing.T) {
+	s1 := gset.NewStrSet(true)
+	s1.Add([]string{"a", "b", "c", "d"}...)
+	s2 := gset.NewStrSet(true)
+	s2.Add([]string{"a", "b", "c", "d"}...)
+	fmt.Println(s1.Union(s2).Slice())
+}
+
+func TestUnmarshalValue(t *testing.T) {
+	s := gset.NewStrSetFrom([]string{"a"}, true)
+	s.UnmarshalValue([]string{"b", "c"})
+	fmt.Println(s.Slice())
+}
+
+func TestUnmarshalJSON(t *testing.T) {
+	b := []byte(`{"Id":1,"Name":"john","Scores":["100","99","98"]}`)
+	type Student struct {
+		Id     int
+		Name   string
+		Scores *gset.StrSet
+	}
+	s := Student{}
+	json.Unmarshal(b, &s)
+	fmt.Println(s)
 }
