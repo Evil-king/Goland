@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gogf/gf/container/gset"
+	"strconv"
 	"testing"
 	"time"
 )
@@ -143,28 +144,35 @@ func TestJoin(t *testing.T) {
 
 func TestLockFunc(t *testing.T) {
 	s1 := gset.NewStrSet(true)
-	s1.Add([]string{"1", "2"}...)
-	go func() {
-		s1.LockFunc(func(m map[string]struct{}) {
-			m["3"] = struct{}{}
-		})
-		fmt.Println("one:", s1.Slice())
-	}()
-	time.Sleep(time.Duration(2) * time.Second)
-	go func() {
-		s1.LockFunc(func(m map[string]struct{}) {
-			m["4"] = struct{}{}
-		})
-		fmt.Println("two:", s1.Slice())
-	}()
-	time.Sleep(time.Duration(2) * time.Second)
-	go func() {
-		s1.LockFunc(func(m map[string]struct{}) {
-			m["5"] = struct{}{}
-		})
-		fmt.Println("three:", s1.Slice())
-	}()
-	time.Sleep(time.Duration(2) * time.Second)
+	num := 1
+	for i := 0; i < 5; i++ {
+		go func() {
+			s1.LockFunc(func(m map[string]struct{}) {
+				m[strconv.Itoa(num)] = struct{}{}
+				num++
+			})
+		}()
+		go func() {
+			s1.LockFunc(func(m map[string]struct{}) {
+				m[strconv.Itoa(num)] = struct{}{}
+				num++
+			})
+		}()
+	}
+
+	//time.Sleep(time.Duration(1) * time.Second)
+	//go func() {
+	//	for i := 0; i < 5; i++ {
+	//		s1.LockFunc(func(m map[string]struct{}) {
+	//			m[strconv.Itoa(num)] = struct{}{}
+	//			num ++
+	//		})
+	//	}
+	//}()
+
+	time.Sleep(time.Duration(1) * time.Second)
+	fmt.Println(s1.Slice())
+
 }
 
 func TestRLockFunc(t *testing.T) {
