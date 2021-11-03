@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/gogf/gf/container/gset"
 	"testing"
+	"time"
 )
 
 func TestNewStrSet(t *testing.T) {
@@ -25,21 +26,32 @@ func TestNewStrSetFrom(t *testing.T) {
 
 }
 
+func TestAdd(t *testing.T) {
+	strSet := gset.NewStrSetFrom([]string{"str1", "str2", "str3"}, true)
+	strSet.Add("str")
+	fmt.Println(strSet.Slice())
+	fmt.Println(strSet.AddIfNotExist("str"))
+}
+
 func TestAddIfNotExist(t *testing.T) {
 	var strSet gset.StrSet
 	fmt.Println(strSet.AddIfNotExist("str"))
 }
 
 func TestAddIfNotExistFunc(t *testing.T) {
-	var strSet gset.StrSet
-	fmt.Println(strSet.AddIfNotExistFunc("str", func() bool {
+	strSet := gset.NewStrSetFrom([]string{"str1", "str2", "str3"}, true)
+	strSet.Add("str")
+	fmt.Println(strSet.Slice())
+	fmt.Println(strSet.AddIfNotExistFunc("str5", func() bool {
 		return true
 	}))
 }
 
 func TestAddIfNotExistFuncLock(t *testing.T) {
-	var strSet gset.StrSet
-	fmt.Println(strSet.AddIfNotExistFuncLock("str", func() bool {
+	strSet := gset.NewStrSetFrom([]string{"str1", "str2", "str3"}, true)
+	strSet.Add("str")
+	fmt.Println(strSet.Slice())
+	fmt.Println(strSet.AddIfNotExistFuncLock("str4", func() bool {
 		return true
 	}))
 }
@@ -47,8 +59,8 @@ func TestAddIfNotExistFuncLock(t *testing.T) {
 func TestClear(t *testing.T) {
 	var strSet gset.StrSet
 	strSet.Add([]string{"str1", "str2", "str3"}...)
+	fmt.Println(strSet.Size())
 	strSet.Clear()
-
 	fmt.Println(strSet.Size())
 }
 
@@ -87,11 +99,14 @@ func TestDiff(t *testing.T) {
 }
 
 func TestEqual(t *testing.T) {
-	s1 := gset.NewStrSet(true)
-	s1.Add([]string{"a", "b", "c"}...)
-	var s2 gset.StrSet
-	s2.Add([]string{"a", "b", "c", "d"}...)
+
+	s1 := gset.NewStrSetFrom([]string{"a", "b", "c"}, true)
+	s2 := gset.NewStrSetFrom([]string{"a", "b", "c", "d"}, true)
 	fmt.Println(s2.Equal(s1))
+
+	s3 := gset.NewStrSetFrom([]string{"a", "b", "c"}, true)
+	s4 := gset.NewStrSetFrom([]string{"a", "b", "c"}, true)
+	fmt.Println(s3.Equal(s4))
 }
 
 func TestIntersect(t *testing.T) {
@@ -128,10 +143,28 @@ func TestJoin(t *testing.T) {
 
 func TestLockFunc(t *testing.T) {
 	s1 := gset.NewStrSet(true)
-	s1.Add([]string{"a", "b", "c", "d"}...)
-	s1.LockFunc(func(m map[string]struct{}) {
-		m["a"] = struct{}{}
-	})
+	s1.Add([]string{"1", "2"}...)
+	go func() {
+		s1.LockFunc(func(m map[string]struct{}) {
+			m["3"] = struct{}{}
+		})
+		fmt.Println("one:", s1.Slice())
+	}()
+	time.Sleep(time.Duration(2) * time.Second)
+	go func() {
+		s1.LockFunc(func(m map[string]struct{}) {
+			m["4"] = struct{}{}
+		})
+		fmt.Println("two:", s1.Slice())
+	}()
+	time.Sleep(time.Duration(2) * time.Second)
+	go func() {
+		s1.LockFunc(func(m map[string]struct{}) {
+			m["5"] = struct{}{}
+		})
+		fmt.Println("three:", s1.Slice())
+	}()
+	time.Sleep(time.Duration(2) * time.Second)
 }
 
 func TestRLockFunc(t *testing.T) {
