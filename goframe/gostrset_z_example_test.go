@@ -1,22 +1,16 @@
-package gostrset
+package main
 
 import (
 	"encoding/json"
 	"fmt"
 	"github.com/gogf/gf/container/gset"
-	"strconv"
 	"testing"
-	"time"
 )
 
 func TestNewStrSet(t *testing.T) {
-	var strSet gset.StrSet
+	strSet := gset.NewStrSet(true)
 	strSet.Add([]string{"str1", "str2", "str3"}...)
-
-	strSet.Iterator(func(v string) bool {
-		fmt.Println("Iterator ", v)
-		return true
-	})
+	fmt.Println(strSet.Slice())
 }
 
 func TestNewStrSetFrom(t *testing.T) {
@@ -144,33 +138,10 @@ func TestJoin(t *testing.T) {
 
 func TestLockFunc(t *testing.T) {
 	s1 := gset.NewStrSet(true)
-	num := 1
-	for i := 0; i < 5; i++ {
-		go func() {
-			s1.LockFunc(func(m map[string]struct{}) {
-				m[strconv.Itoa(num)] = struct{}{}
-				num++
-			})
-		}()
-		go func() {
-			s1.LockFunc(func(m map[string]struct{}) {
-				m[strconv.Itoa(num)] = struct{}{}
-				num++
-			})
-		}()
-	}
-
-	//time.Sleep(time.Duration(1) * time.Second)
-	//go func() {
-	//	for i := 0; i < 5; i++ {
-	//		s1.LockFunc(func(m map[string]struct{}) {
-	//			m[strconv.Itoa(num)] = struct{}{}
-	//			num ++
-	//		})
-	//	}
-	//}()
-
-	time.Sleep(time.Duration(1) * time.Second)
+	s1.Add([]string{"1", "2"}...)
+	s1.LockFunc(func(m map[string]struct{}) {
+		m["3"] = struct{}{}
+	})
 	fmt.Println(s1.Slice())
 
 }
@@ -242,7 +213,7 @@ func TestString(t *testing.T) {
 
 func TestSum(t *testing.T) {
 	s1 := gset.NewStrSet(true)
-	s1.Add([]string{"a", "b", "c", "d"}...)
+	s1.Add([]string{"1", "2", "3", "4"}...)
 	fmt.Println(s1.Sum())
 }
 
