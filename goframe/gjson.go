@@ -1,4 +1,4 @@
-package gostrset
+package main
 
 import (
 	"fmt"
@@ -59,4 +59,8 @@ func TestJsonToStruct1(t *testing.T) {
 		}
 		fmt.Printf(`%+v`, students)
 	}
+}
+
+func TestGoroutine(t *testing.T) {
+
 }
