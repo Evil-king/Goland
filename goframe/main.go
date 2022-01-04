@@ -9,14 +9,14 @@ func main() {
 	//go count(5,"♈")
 	//count(5,"牛")
 
-	strSlice := make([]string, 0)
-
-	A(&strSlice)
-	B(&strSlice)
-
-	for _, value := range strSlice {
-		fmt.Println(value)
-	}
+	//strSlice := make([]string, 0)
+	//
+	//A(&strSlice)
+	//B(&strSlice)
+	//
+	//for _, value := range strSlice {
+	//	fmt.Println(value)
+	//}
 }
 
 func A(s *[]string) {
