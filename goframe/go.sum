@@ -1,3 +1,6 @@
+gitee.com/go-package/carbon v1.5.5 h1:26LZmSzEX6XEj+LP9JRzYX05yC7WxFngpUWt3a99VK0=
+gitee.com/go-package/carbon/v2 v2.0.1 h1:zHn90L90LmcIOSykokj7F5wsULKCt9oXEgb5e5RSBPg=
+gitee.com/go-package/carbon/v2 v2.0.1/go.mod h1:fkT3t++M6Mhw4WrJvtMGARJEsoCvdPvLj1RLzWAuiE4=
 github.com/BurntSushi/toml v0.3.1 h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/clbanning/mxj v1.8.5-0.20200714211355-ff02cfb8ea28 h1:LdXxtjzvZYhhUaonAaAKArG3pyC67kGL3YY+6hGG8G4=
