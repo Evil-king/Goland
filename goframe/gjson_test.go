@@ -50,14 +50,7 @@ func TestJsonToStruct1(t *testing.T) {
 		}
 		//users := new(Users)
 		students := new(Students)
-		if err := j.Get("students", students); err != nil {
-			panic(err)
-		} else {
-			fmt.Printf(`%+v`, students)
-		}
+		result := j.Get("students", students)
+		fmt.Printf(`%+v`, result)
 	}
-}
-
-func TestGoroutine(t *testing.T) {
-
 }
