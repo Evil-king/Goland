@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/gogf/gf/encoding/gjson"
+	"github.com/gogf/gf/v2/encoding/gjson"
 	"testing"
 )
 
@@ -22,7 +22,7 @@ func TestJsonToStruct(t *testing.T) {
 		panic(err)
 	} else {
 		users := new(Users)
-		if err := j.Struct(users); err != nil {
+		if err := j.Scan(users); err != nil {
 			panic(err)
 		}
 		fmt.Printf(`%+v`, users)
@@ -44,20 +44,17 @@ func TestJsonToStruct1(t *testing.T) {
 	if j, err := gjson.DecodeToJson(data); err != nil {
 		panic(err)
 	} else {
-		type Users struct {
-			Count int
-			Array []string
-		}
 		type Students struct {
-			Name string
-			Age  string
+			Name string `json:"name"`
+			Age  string `json:"age"`
 		}
 		//users := new(Users)
 		students := new(Students)
-		if err := j.GetStruct("students", students); err != nil {
+		if err := j.Get("students", students); err != nil {
 			panic(err)
+		} else {
+			fmt.Printf(`%+v`, students)
 		}
-		fmt.Printf(`%+v`, students)
 	}
 }
 
