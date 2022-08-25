@@ -3,7 +3,6 @@ package model
 import (
 	"context"
 	"github.com/gogf/gf/database/gdb"
-	"goframe/pdb"
 	"goframe/rdb"
 	"goframe/usertype"
 )
@@ -11,18 +10,14 @@ import (
 func UserCreate(ctx context.Context, data usertype.UserRequest) error {
 	user := usertype.User{}
 	user.Name = data.UserName
-	orm, err := pdb.GetDBInstance()
-	if err != nil {
-		panic(err)
-	}
-	orm.Transaction(ctx, func(ctx context.Context, tx *gdb.TX) error {
+	rdb.TransCtx(ctx, func(ctx context.Context, tx *gdb.TX) error {
 		// 添加user
 		dbResult, err := rdb.InsertUser(tx, user)
 		if err != nil {
 			return err
 		}
 		userId, _ := dbResult.LastInsertId()
-		//panic(0 / 1)
+		panic(0 / 1)
 		// 添加userDetails
 		userDetail := usertype.UserDetails{}
 		userDetail.UserId = userId
@@ -33,7 +28,8 @@ func UserCreate(ctx context.Context, data usertype.UserRequest) error {
 		if err != nil {
 			return err
 		}
-		return nil
+		return err
 	})
+
 	return nil
 }
