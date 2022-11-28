@@ -30,7 +30,7 @@ import (
 // }
 
 func main() {
-	fmt.Println(time.Now().AddDate(0,0,7).Format("2006-01-02"))
+	fmt.Println(time.Now().AddDate(0, 0, 7).Format("2006-01-02"))
 
 }
 
