@@ -7,7 +7,7 @@ import (
 	"net"
 )
 
-// iServer的接口实现，定义一个Server的服务器模块
+// Server iServer的接口实现，定义一个Server的服务器模块
 type Server struct {
 	//服务器的名称
 	Name string
@@ -17,11 +17,23 @@ type Server struct {
 	Ip string
 	//服务器监听的端口
 	Port int
-	//当前的Server添加一个Router,server注册的链接对应的处理业务
-	Router ziface.IRouter
+	//当前Server的消息管理模块，用来绑定MsgId和对应的处理方法
+	MsgHandler ziface.IMsgHandler
 }
 
-//启动服务器
+// NewServer 初始化Server
+func NewServer() ziface.IServer {
+	utils.GlobalObject.Reload()
+	return &Server{
+		Name:       utils.GlobalObject.Name,
+		IPVersion:  "tcp4",
+		Ip:         utils.GlobalObject.Host,
+		Port:       utils.GlobalObject.TcpPort,
+		MsgHandler: NewMsgHandler(),
+	}
+}
+
+// Start 启动服务器
 func (s *Server) Start() {
 	fmt.Printf("[Zinx] Server Listener at IP :%s,Port :%d,is starting\n",
 		utils.GlobalObject.Host,
@@ -58,7 +70,7 @@ func (s *Server) Start() {
 			}
 
 			// 将处理新链接的业务方法 和conn 进行绑定 得到我们的链接模块
-			dealConn := NewConnection(conn, cid, s.Router)
+			dealConn := NewConnection(conn, cid, s.MsgHandler)
 			cid++
 
 			// 启动当前的链接业务处理
@@ -68,12 +80,12 @@ func (s *Server) Start() {
 
 }
 
-//停止服务器
+// Stop 停止服务器
 func (s *Server) Stop() {
 	//TODO 将一些服务器的资源、状态或者一些已经开辟的链接信息 进行停止或者回收
 }
 
-//运行服务器
+// Serve 运行服务器
 func (s *Server) Serve() {
 	//启动server的服务功能
 	s.Start()
@@ -84,19 +96,8 @@ func (s *Server) Serve() {
 	select {}
 }
 
-//路由功能，给当前的服务注册一个路由方法，供客户端的链接处理试用
-func (s *Server) AddRouter(router ziface.IRouter) {
-	s.Router = router
+// AddRouter 路由功能，给当前的服务注册一个路由方法，供客户端的链接处理试用
+func (s *Server) AddRouter(msgId uint32, router ziface.IRouter) {
+	s.MsgHandler.AddRouter(msgId, router)
 	fmt.Println("Add Router Succ!!")
-}
-
-func NewServer() ziface.IServer {
-	utils.GlobalObject.Reload()
-	return &Server{
-		Name:      utils.GlobalObject.Name,
-		IPVersion: "tcp4",
-		Ip:        utils.GlobalObject.Host,
-		Port:      utils.GlobalObject.TcpPort,
-		Router:    nil,
-	}
 }

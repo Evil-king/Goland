@@ -46,7 +46,7 @@ func main() {
 	//创建一个server句柄 使用Zinx的api
 	s := znet.NewServer()
 	//给当前zinx框架添加一个自定义的router
-	s.AddRouter(&PingRouter{})
+	s.AddRouter(0, &PingRouter{})
 	//启动server
 	s.Serve()
 }

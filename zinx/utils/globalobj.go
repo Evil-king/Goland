@@ -46,12 +46,12 @@ func (g *GlobalObj) Reload() {
 func init() {
 	GlobalObject = &GlobalObj{
 		Name:          "ZinxServerApp",
-		Version:       "V0.4",
+		Version:       "V0.6",
 		TcpPort:       8999,
 		Host:          "0.0.0.0",
 		MaxConn:       12000,
 		MaxPacketSize: 4096,
 	}
 	//从配置文件中加载一些用户配置的参数
-	//GlobalObject.Reload()
+	GlobalObject.Reload()
 }

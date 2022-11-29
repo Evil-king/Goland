@@ -25,22 +25,22 @@ type Connection struct {
 	//告知当前链接已经退出的/停止 channel
 	ExitChan chan bool
 
-	//该链接处理的方法
-	Router ziface.IRouter
+	//消息管理MsgId和对应处理方法的消息管理模块
+	MsgHandler ziface.IMsgHandler
 }
 
-//初始化链接模块的方法
-func NewConnection(conn *net.TCPConn, connId uint32, router ziface.IRouter) *Connection {
+// NewConnection 初始化链接模块的方法
+func NewConnection(conn *net.TCPConn, connId uint32, msgHandler ziface.IMsgHandler) *Connection {
 	return &Connection{
-		Conn:     conn,
-		ConnId:   connId,
-		Router:   router,
-		isClosed: false,
-		ExitChan: make(chan bool, 1),
+		Conn:       conn,
+		ConnId:     connId,
+		MsgHandler: msgHandler,
+		isClosed:   false,
+		ExitChan:   make(chan bool, 1),
 	}
 }
 
-//连接的读业务方法
+// StartReader 连接的读业务方法
 func (c *Connection) StartReader() {
 	fmt.Println("Reader Goroutine is running...")
 	defer fmt.Println("connId=", c.ConnId, "Reader is exit,remote addr is ", c.RemoteAddr().String())
@@ -93,18 +93,14 @@ func (c *Connection) StartReader() {
 			message: msg,
 		}
 
-		//执行注册的路由方法
-		go func(request ziface.IRequest) {
-			//从路由中找到注册绑定的Conn对应的router调用
-			c.Router.PreHandle(request)
-			c.Router.Handle(request)
-			c.Router.PostHandle(request)
-		}(&req)
+		//创建消息管理对象
+		//根据绑定好的MsgId 找到对应处理的api业务
+		go c.MsgHandler.DoMsgHandler(&req)
 
 	}
 }
 
-//启动链接 让当前的链接准备开始工作
+// Start 启动链接 让当前的链接准备开始工作
 func (c *Connection) Start() {
 	fmt.Println("Conn Start().... ConnID=", c.ConnId)
 	//启动从当前链接的读数据的业务
@@ -113,7 +109,7 @@ func (c *Connection) Start() {
 
 }
 
-//停止链接 结束当前链接的工作
+// Stop 停止链接 结束当前链接的工作
 func (c *Connection) Stop() {
 	fmt.Println("Conn Stop()....ConnId = ", c.ConnId)
 	if c.isClosed {
@@ -128,22 +124,22 @@ func (c *Connection) Stop() {
 	close(c.ExitChan)
 }
 
-//获取当前链接绑定的socket conn
+// GetTCPConnection 获取当前链接绑定的socket conn
 func (c *Connection) GetTCPConnection() *net.TCPConn {
 	return c.Conn
 }
 
-//获取当前链接模块的链接ID
+// GetConnId 获取当前链接模块的链接ID
 func (c *Connection) GetConnId() uint32 {
 	return c.ConnId
 }
 
-//获取远程客户端的 TCP专题 IP port
+// RemoteAddr 获取远程客户端的 TCP专题 IP port
 func (c *Connection) RemoteAddr() net.Addr {
 	return c.Conn.RemoteAddr()
 }
 
-//发送数据 将数据发送给远程的客户端
+// SendMsg 发送数据 将数据发送给远程的客户端
 func (c *Connection) SendMsg(msgId uint32, data []byte) error {
 	if c.isClosed == true {
 		return errors.New("Connection closed when send msg")
