@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"net"
+	"sync"
 )
 
 /*
@@ -33,6 +34,12 @@ type Connection struct {
 
 	//消息管理MsgId和对应处理方法的消息管理模块
 	MsgHandler ziface.IMsgHandler
+
+	//连接属性集合
+	property map[string]interface{}
+
+	//保护连接属性的锁
+	propertyLock sync.RWMutex
 }
 
 // NewConnection 初始化链接模块的方法
@@ -45,6 +52,7 @@ func NewConnection(server ziface.IServer, conn *net.TCPConn, connId uint32, msgH
 		isClosed:   false,
 		ExitChan:   make(chan bool, 1),
 		MsgChan:    make(chan []byte),
+		property:   make(map[string]interface{}),
 	}
 	//将新创建的Conn添加到链接管理中
 	c.TcpServer.GetConnMgr().Add(c) //将当前新创建的连接添加到ConnManager中
@@ -204,4 +212,32 @@ func (c *Connection) SendMsg(msgId uint32, data []byte) error {
 	//放入Writer channel中 写回客户端
 	c.MsgChan <- binaryMsg
 	return nil
+}
+
+// SetProperty 设置链接属性
+func (c *Connection) SetProperty(key string, value interface{}) {
+	c.propertyLock.Lock()
+	defer c.propertyLock.Unlock()
+
+	c.property[key] = value
+}
+
+// GetProperty 获取链接属性
+func (c *Connection) GetProperty(key string) (interface{}, error) {
+	c.propertyLock.RLock()
+	defer c.propertyLock.RUnlock()
+
+	if value, ok := c.property[key]; ok {
+		return value, nil
+	} else {
+		return nil, errors.New("no property found")
+	}
+}
+
+// RemoveProperty 移除链接属性
+func (c *Connection) RemoveProperty(key string) {
+	c.propertyLock.Lock()
+	defer c.propertyLock.Unlock()
+
+	delete(c.property, key)
 }
