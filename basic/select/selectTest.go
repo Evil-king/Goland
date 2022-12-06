@@ -21,13 +21,15 @@ func main() {
 	//fmt.Println("main结束")
 
 	//创建管道
-	output1 := make(chan string, 10)
-	go write(output1)
+	//output1 := make(chan string, 10)
+	//go write(output1)
+	//
+	//for s := range output1 {
+	//	fmt.Println("res:", s)
+	//	time.Sleep(time.Second)
+	//}
 
-	for s := range output1 {
-		fmt.Println("res:", s)
-		time.Sleep(time.Second)
-	}
+	select {}
 }
 
 func write(output1 chan string) {

@@ -9,29 +9,51 @@ import (
 
 //有三个函数 分别打印cat dog fish
 //要求每个函数都起一个goroutine，请按照cat dog fish的顺序打印在屏幕上，每个100次
-// func main() {
-// 	var wg sync.WaitGroup
-// 	var dogCount uint64
-// 	var catCount uint64
-// 	var fishCount uint64
-
-// 	dogch := make(chan struct{}, 1)
-// 	catch := make(chan struct{}, 1)
-// 	fishch := make(chan struct{}, 1)
-
-// 	wg.Add(3)
-// 	go cat(&wg, catCount, catch, dogch)
-// 	go dog(&wg, dogCount, dogch, fishch)
-// 	go fish(&wg, fishCount, fishch, catch)
-
-// 	catch <- struct{}{}
-
-// 	wg.Wait()
-// }
-
 func main() {
-	fmt.Println(time.Now().AddDate(0, 0, 7).Format("2006-01-02"))
+	var wg sync.WaitGroup
+	var dogCount uint64
+	var catCount uint64
+	var fishCount uint64
 
+	dogch := make(chan struct{}, 1)
+	catch := make(chan struct{}, 1)
+	fishch := make(chan struct{}, 1)
+
+	wg.Add(3)
+	go cat(&wg, catCount, catch, dogch)
+	go dog(&wg, dogCount, dogch, fishch)
+	go fish(&wg, fishCount, fishch, catch)
+
+	catch <- struct{}{}
+
+	wg.Wait()
+}
+
+func main1() {
+	//fmt.Println(time.Now().AddDate(0, 0, 7).Format("2006-01-02"))
+	//ctx, cancel := context.WithCancel(context.Background())
+	//
+	//ch := func(ctx context.Context) <-chan int {
+	//	ch := make(chan int)
+	//	go func() {
+	//		for i := 0; ; i++ {
+	//			select {
+	//			case <- ctx.Done():
+	//				return
+	//			case ch <- i:
+	//			}
+	//		}
+	//	} ()
+	//	return ch
+	//}(ctx)
+	//
+	//for v := range ch {
+	//	fmt.Println(v)
+	//	if v == 5 {
+	//		cancel()
+	//		break
+	//	}
+	//}
 }
 
 func GetWeek(datetime string) (y, w int) {
