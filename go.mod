@@ -10,7 +10,4 @@ require (
 	//github.com/antchfx/xpath v1.1.11 // indirect
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/gohouse/converter v0.0.3
-	github.com/json-iterator/go v1.1.12
-	github.com/sirupsen/logrus v1.9.0
-	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
