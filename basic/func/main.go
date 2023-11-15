@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sync"
 	"time"
 )
 
@@ -9,18 +10,18 @@ type Person struct {
 	Name string
 }
 
-//给person类型绑定一个方法
+// 给person类型绑定一个方法
 func (p Person) test() {
 	p.Name = "Mary"
 	fmt.Println("test()", p.Name)
 }
 
-//给Person结构体添加一个speak 方法
+// 给Person结构体添加一个speak 方法
 func (p Person) speak() {
 	fmt.Println(p.Name, "是一个goodMan")
 }
 
-//给Person结构体添加计算的方法，，可以计算从1+...+1000的结果
+// 给Person结构体添加计算的方法，，可以计算从1+...+1000的结果
 func (p Person) jisuan(num int) int {
 	var result int
 	for num = 1; num <= 1000; num++ {
@@ -29,7 +30,7 @@ func (p Person) jisuan(num int) int {
 	return result
 }
 
-//给person结构体jisuan2方法 该方法可以接受一个数n 计算从1+....+n的结果
+// 给person结构体jisuan2方法 该方法可以接受一个数n 计算从1+....+n的结果
 func (p Person) jisuan2(n int) int {
 	var result int
 	for i := 1; i <= n; i++ {
@@ -38,22 +39,22 @@ func (p Person) jisuan2(n int) int {
 	return result
 }
 
-//给person结构体添加getSum方法，可以计算两个数的和，并返回结果
+// 给person结构体添加getSum方法，可以计算两个数的和，并返回结果
 func (p Person) getSum(a, b int) int {
 	return a + b
 }
 
-//匿名函数赋值给变量
+// 匿名函数赋值给变量
 var currentTime = func() {
 	fmt.Println(time.Now())
 }
 
-//匿名函数当作回掉函数使用
+// 匿名函数当作回掉函数使用
 func proc(input string, processor func(str string)) {
 	processor(input)
 }
 
-//闭包作为函数返回值
+// 闭包作为函数返回值
 func Increase() func() int {
 	n := 0
 	return func() int {
@@ -98,10 +99,27 @@ func main() {
 	//in := Increase()
 	//fmt.Println(in())
 
-	n := 0
-	f := func() int {
-		n += 1
-		return n
+	//n := 0
+	//f := func() int {
+	//	n += 1
+	//	return n
+	//}
+	//fmt.Println(f())
+
+	var wg sync.WaitGroup
+	wg.Add(10)
+	for i := 0; i < 10; i++ {
+		go func(i int) {
+			fmt.Println("执行逻辑......:", i)
+		}(i)
+		wg.Done()
+		time.Sleep(1000)
 	}
-	fmt.Println(f())
+	wg.Wait()
+	wg.Add(1)
+	go func() {
+		fmt.Println("第二个go执行逻辑......")
+		wg.Done()
+	}()
+	wg.Wait()
 }

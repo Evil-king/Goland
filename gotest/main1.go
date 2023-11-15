@@ -2,33 +2,57 @@ package main
 
 import (
 	"fmt"
+	"github.com/spf13/cast"
 	"sync"
 	"sync/atomic"
 	"time"
 )
 
-//有三个函数 分别打印cat dog fish
-//要求每个函数都起一个goroutine，请按照cat dog fish的顺序打印在屏幕上，每个100次
+// 有三个函数 分别打印cat dog fish
+// 要求每个函数都起一个goroutine，请按照cat dog fish的顺序打印在屏幕上，每个100次
 func main() {
-	var wg sync.WaitGroup
-	var dogCount uint64
-	var catCount uint64
-	var fishCount uint64
+	referenceList := []string{"a", "b", "c"}
 
-	dogch := make(chan struct{}, 1)
-	catch := make(chan struct{}, 1)
-	fishch := make(chan struct{}, 1)
+	flagChannel := make(chan string, len(referenceList))
+	resultChannel := make(chan string)
+	ticker := time.NewTicker(5 * time.Second)
 
-	wg.Add(3)
-	go cat(&wg, catCount, catch, dogch)
-	go dog(&wg, dogCount, dogch, fishch)
-	go fish(&wg, fishCount, fishch, catch)
+	// 使用 time.After 等待定时器的首次触发
+	<-time.After(5 * time.Second)
 
-	catch <- struct{}{}
+	// 启动一个 goroutine 来执行 BatchCartTransStateController
+	go func() {
+		for range ticker.C {
+			BatchCartTransStateController(flagChannel, resultChannel, referenceList)
+		}
+	}()
+	result := <-resultChannel
+	if result != "" {
+		ticker.Stop()
+	}
 
-	wg.Wait()
 }
 
+func BatchCartTransStateController(flagChannel, resultChannel chan string, referenceList []string) {
+	// 执行 BatchCartTransStateController 的逻辑
+	for key, str := range referenceList {
+		fmt.Println(str)
+		flagChannel <- cast.ToString(key)
+	}
+	fmt.Println("通道中剩余的数据量:", len(flagChannel))
+	if len(flagChannel) == len(referenceList) {
+		resultChannel <- "stop"
+	}
+
+}
+
+func doSomething() {
+	fmt.Println("执行第一个方法")
+}
+
+func doSomethingElse() {
+	fmt.Println("执行第二个方法")
+}
 func main1() {
 	//fmt.Println(time.Now().AddDate(0, 0, 7).Format("2006-01-02"))
 	//ctx, cancel := context.WithCancel(context.Background())
