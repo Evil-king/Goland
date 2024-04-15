@@ -14,11 +14,9 @@ func main() {
 	referenceList := []string{"a", "b", "c"}
 
 	flagChannel := make(chan string, len(referenceList))
-	resultChannel := make(chan string)
-	ticker := time.NewTicker(5 * time.Second)
+	resultChannel := make(chan bool)
 
-	// 使用 time.After 等待定时器的首次触发
-	<-time.After(5 * time.Second)
+	ticker := time.NewTicker(5 * time.Second)
 
 	// 启动一个 goroutine 来执行 BatchCartTransStateController
 	go func() {
@@ -26,23 +24,24 @@ func main() {
 			BatchCartTransStateController(flagChannel, resultChannel, referenceList)
 		}
 	}()
-	result := <-resultChannel
-	if result != "" {
+	flag := <-resultChannel
+	if flag {
 		ticker.Stop()
 	}
-
+	fmt.Println("通道中剩余的数据量:", len(flagChannel))
 }
 
-func BatchCartTransStateController(flagChannel, resultChannel chan string, referenceList []string) {
+func BatchCartTransStateController(flagChannel chan string, resultChannel chan bool, referenceList []string) {
 	// 执行 BatchCartTransStateController 的逻辑
 	for key, str := range referenceList {
 		fmt.Println(str)
 		flagChannel <- cast.ToString(key)
 	}
-	fmt.Println("通道中剩余的数据量:", len(flagChannel))
-	if len(flagChannel) == len(referenceList) {
-		resultChannel <- "stop"
-	}
+	//fmt.Println("通道中剩余的数据量:", len(flagChannel))
+	//if len(flagChannel) == len(referenceList) {
+	//	resultChannel <- "stop"
+	//}
+	resultChannel <- true
 
 }
 
@@ -52,32 +51,6 @@ func doSomething() {
 
 func doSomethingElse() {
 	fmt.Println("执行第二个方法")
-}
-func main1() {
-	//fmt.Println(time.Now().AddDate(0, 0, 7).Format("2006-01-02"))
-	//ctx, cancel := context.WithCancel(context.Background())
-	//
-	//ch := func(ctx context.Context) <-chan int {
-	//	ch := make(chan int)
-	//	go func() {
-	//		for i := 0; ; i++ {
-	//			select {
-	//			case <- ctx.Done():
-	//				return
-	//			case ch <- i:
-	//			}
-	//		}
-	//	} ()
-	//	return ch
-	//}(ctx)
-	//
-	//for v := range ch {
-	//	fmt.Println(v)
-	//	if v == 5 {
-	//		cancel()
-	//		break
-	//	}
-	//}
 }
 
 func GetWeek(datetime string) (y, w int) {
