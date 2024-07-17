@@ -10,25 +10,66 @@ import (
 
 // 有三个函数 分别打印cat dog fish
 // 要求每个函数都起一个goroutine，请按照cat dog fish的顺序打印在屏幕上，每个100次
+
 func main() {
-	referenceList := []string{"a", "b", "c"}
+	//referenceList := []string{"a", "b", "c"}
+	//
+	//flagChannel := make(chan string, len(referenceList))
+	//resultChannel := make(chan bool)
+	//
+	//ticker := time.NewTicker(5 * time.Second)
+	//
+	//// 启动一个 goroutine 来执行 BatchCartTransStateController
+	//go func() {
+	//	for range ticker.C {
+	//		BatchCartTransStateController(flagChannel, resultChannel, referenceList)
+	//	}
+	//}()
+	//flag := <-resultChannel
+	//if flag {
+	//	ticker.Stop()
+	//}
+	//fmt.Println("通道中剩余的数据量:", len(flagChannel))
 
-	flagChannel := make(chan string, len(referenceList))
-	resultChannel := make(chan bool)
+	var wg sync.WaitGroup
+	var mu sync.Mutex
+	cond := sync.NewCond(&mu)
+	oddTurn := true
 
-	ticker := time.NewTicker(5 * time.Second)
-
-	// 启动一个 goroutine 来执行 BatchCartTransStateController
-	go func() {
-		for range ticker.C {
-			BatchCartTransStateController(flagChannel, resultChannel, referenceList)
+	wg.Add(2)
+	// 奇数
+	printOdd := func() {
+		defer wg.Done()
+		for i := 1; i <= 100; i += 2 {
+			mu.Lock()
+			if !oddTurn {
+				cond.Wait()
+			}
+			fmt.Println(i)
+			oddTurn = false
+			cond.Signal()
+			mu.Unlock()
 		}
-	}()
-	flag := <-resultChannel
-	if flag {
-		ticker.Stop()
 	}
-	fmt.Println("通道中剩余的数据量:", len(flagChannel))
+
+	// 偶数
+	printEven := func() {
+		defer wg.Done()
+		for i := 2; i <= 100; i += 2 {
+			mu.Lock()
+			if oddTurn {
+				cond.Wait()
+			}
+			fmt.Println(i)
+			oddTurn = true
+			cond.Signal()
+			mu.Unlock()
+		}
+	}
+	go printEven()
+	go printOdd()
+	wg.Wait()
+
 }
 
 func BatchCartTransStateController(flagChannel chan string, resultChannel chan bool, referenceList []string) {
