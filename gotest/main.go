@@ -30,7 +30,7 @@ func main() {
 	//	ticker.Stop()
 	//}
 	//fmt.Println("通道中剩余的数据量:", len(flagChannel))
-	//PrintOddAndEven()
+	PrintOddAndEven()
 	//PrintNGoroutine()
 }
 
@@ -111,7 +111,7 @@ func PrintOddAndEven() {
 	// 奇数
 	printOdd := func() {
 		defer wg.Done()
-		for i := 1; i <= 100; i += 2 {
+		for i := 1; i <= 26; i += 2 {
 			mu.Lock()
 			if !oddTurn {
 				cond.Wait()
@@ -126,7 +126,7 @@ func PrintOddAndEven() {
 	// 偶数
 	printEven := func() {
 		defer wg.Done()
-		for i := 2; i <= 100; i += 2 {
+		for i := 2; i <= 26; i += 2 {
 			mu.Lock()
 			if oddTurn {
 				cond.Wait()
