@@ -53,6 +53,7 @@ func TwoSum(nums []int, target int) []int {
 	}
 	return []int{}
 }
+
 func TestName(t *testing.T) {
 	//result := TwoSum([]int{2, 7, 11, 15}, 17)
 	//g.Dump(result)
