@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"github.com/spf13/cast"
+	"math/rand"
+	"reflect"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -10,6 +12,11 @@ import (
 
 // 有三个函数 分别打印cat dog fish
 // 要求每个函数都起一个goroutine，请按照cat dog fish的顺序打印在屏幕上，每个100次
+
+type RechargeListExcel struct {
+	ID   int    `json:"id" excel:"userId"`
+	Name string `json:"name" excel:"nickname"`
+}
 
 func main() {
 	//referenceList := []string{"a", "b", "c"}
@@ -30,8 +37,63 @@ func main() {
 	//	ticker.Stop()
 	//}
 	//fmt.Println("通道中剩余的数据量:", len(flagChannel))
-	PrintOddAndEven()
+	//PrintOddAndEven()
 	//PrintNGoroutine()
+
+	//cards := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	//fmt.Println("Before shuffle:", cards)
+	//shuffle(cards)
+	//fmt.Println("After shuffle:", cards)
+	//removeElementByIndex(cards, 3)
+	//for _, v := range cards {
+	//	fmt.Println(v)
+	//}]
+
+	// Example slice of pointers to structs
+	var slice []RechargeListExcel
+	slice = append(slice, RechargeListExcel{
+		ID:   1,
+		Name: "test",
+	}, RechargeListExcel{
+		ID:   2,
+		Name: "fox",
+	})
+	// Get the type of the slice
+	t := reflect.TypeOf(slice)           // 获取类型
+	sliceValue := reflect.ValueOf(slice) // 获取值
+
+	// Check if it's a slice
+	if t.Kind() == reflect.Slice {
+		// Get the type of the elements in the slice
+		elemType := t.Elem()
+
+		for i := 0; i < sliceValue.Len(); i++ {
+			elemValue := sliceValue.Index(i) // get slice elemValue
+			// Check if the element is a pointer
+			if elemType.Kind() == reflect.Ptr {
+				// Dereference the pointer to get the underlying struct type
+				elemType = elemType.Elem()
+			}
+
+			// Check if the element is a struct
+			if elemType.Kind() == reflect.Struct {
+				// Now you can call NumField() on the struct type
+				fmt.Printf("The struct has %d fields\n", elemType.NumField())
+
+				// Print all field names
+				for j := 0; j < elemType.NumField(); j++ {
+					field := elemType.Field(j)
+					tag := field.Tag.Get("excel")
+					value := elemValue.Field(j) // 获取字段值
+					fmt.Printf("Field %d: %s (%s) tag:%s,value:%s\n", j, field.Name, field.Type, tag, value)
+				}
+			} else {
+				fmt.Println("The slice does not contain structs")
+			}
+		}
+	} else {
+		fmt.Println("The provided value is not a slice")
+	}
 }
 
 func BatchCartTransStateController(flagChannel chan string, resultChannel chan bool, referenceList []string) {
@@ -173,4 +235,50 @@ func PrintNGoroutine() {
 
 	// 等待所有 goroutine 完成
 	wg.Wait()
+}
+
+// 洗牌算法
+func shuffle(slice []int) {
+
+	rand.Seed(time.Now().UnixNano())
+	n := len(slice)
+	for i := n - 1; i > 0; i-- {
+		j := rand.Intn(i + 1)
+		slice[i], slice[j] = slice[j], slice[i]
+	}
+}
+
+func solution(ranks map[int]int) int {
+	tempMap := make(map[int]int, 0)
+	for k, v := range ranks {
+		// 如果用户的排名与荣誉值相等
+		if k != v {
+			// 排名最接近荣誉值:排名>=荣誉值
+			if k >= v {
+				tempMap[k] = v
+			}
+		} else {
+			return k
+		}
+	}
+	// 如果tempMap不为空,寻找排名最低
+	if len(tempMap) > 0 {
+		tempNum := 0
+		flag := true
+		for k := range tempMap {
+			if flag {
+				tempNum = k
+				flag = false
+			}
+			if k < tempNum {
+				tempNum = k
+			}
+		}
+		return tempNum
+	}
+	return 0
+}
+
+func removeElementByIndex(s []int, index int) []int {
+	return append(s[:index], s[index+1:]...)
 }
